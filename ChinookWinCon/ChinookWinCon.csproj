@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="t4Scripts\DataModelAllTables.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataModelAllTables.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="t4Scripts\DataModelAllTables.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataModelAllTables.cs</LastGenOutput>
+    </None>
+    <None Update="t4Scripts\DataModelTable.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataModelTable.cs</LastGenOutput>
+    </None>
+    <None Update="t4Scripts\DataModelTableColumn.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataModelTableColumn.txt</LastGenOutput>
+    </None>
+    <None Update="t4Scripts\DataModelTableColumn.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataModelTableColumn.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="t4Scripts\DataModel.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Update="t4Scripts\DataModelAllTables.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataModelAllTables.tt</DependentUpon>
+    </Compile>
+    <Compile Update="t4Scripts\DataModelTable.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataModelTable.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
+</Project>
